@@ -7,6 +7,9 @@ var pony = {
     bar: 'MrBar'
 }
 
+// ES5 (as a comment)
+// ES6 (uncommented)
+
 // var foo = pony.foo
 var { foo } =  pony; // foo = 'MrFoo'
 
