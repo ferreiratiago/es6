@@ -53,3 +53,7 @@ Promise.all([
     Promise.reject(),
     new Promise(resolve => resolve('foo'))
 ]).then(() => console.log('All Resolved'), () => console.log('All Rejected')) // 'All Rejected'
+
+// Btw,
+// This is a great place for promise visualization:
+// http://bevacqua.github.io/promisees/
