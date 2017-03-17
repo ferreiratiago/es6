@@ -63,10 +63,12 @@ var map = new Map([[1, 'Mr.One']])
 
 console.log(map.has('1')) // false
 
-// We can clear the map.
-var map = new Map([['foo', 'Mr.Foo']])
+// We can delete elements.
+var map = new Map([['foo', 'Mr.Foo'], ['bar', 'Mr.Bar']])
+// Using .delete()
+map.delete('bar')
 console.log(map) // Map { 'foo' => 'Mr.Foo' }
-
+// Using .clear(), which deletes everything
 map.clear()
 console.log(map) // Map { }
 
