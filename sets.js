@@ -49,11 +49,11 @@ set.add('zed')
 
 console.log(set) // Set { 'foo', 'bar', 'zed' }
 
-// .has(value)
+// .has()
 // Checks if an element exists on the Set.
 console.log(set.has('zed')) // true
 
-// .delete(value)
+// .delete()
 // Remove an element from the Set.
 set.delete('zed')
 
