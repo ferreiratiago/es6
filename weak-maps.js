@@ -4,8 +4,8 @@
 // WeakMaps are not iterable, i.e. there is no iterable protocol.
 
 // Every key must be an object.
-// var map = new WeakMap()
-// map.set('foo', 'Mr.Foo') // TypeError: Invalid value used as weak map key
+var map = new WeakMap()
+map.set('foo', 'Mr.Foo') // TypeError: Invalid value used as weak map key
 
 // This enable the map keys to be garage collected
 // when they're only being referenced as WeakMap keys.
