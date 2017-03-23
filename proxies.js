@@ -52,7 +52,7 @@ var proxy = new Proxy(target, handler)
 
 proxy.foo = 'Foo'   // Ok
 console.log(target.foo);
-// proxy._bar = 'Bar'  // Invalid attempt to set the private property _bar
+proxy._bar = 'Bar'  // Invalid attempt to set the private property _bar
 
 // It is important to design our proxy in a way
 // that the target object is only acessible through the Proxy.
