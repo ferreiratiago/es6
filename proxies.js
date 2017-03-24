@@ -57,3 +57,36 @@ proxy._bar = 'Bar'  // Invalid attempt to set the private property _bar
 // It is important to design our proxy in a way
 // that the target object is only acessible through the Proxy.
 // Only this way we will ensure that we will obey our access rules.
+
+// Validations with Proxies.
+// We can use Proxies to add some validations to Objects.
+// The Proxy will return a POJO (Plain Old JavaScript Object)
+// and all validations will work smoothly.
+
+// Let's use the example of a Car.
+var validator = {
+    set: function (target, property, value) {
+        // We know by definition that the property tires on a Car
+        // must be a Number with a positive value.
+        if (property === 'tires') {
+            // Validation on the tires variable type
+            if (typeof value !== 'number') {
+                throw new Error('Tires must be a number')
+            }
+            // Validation on the tires variable boundaries
+            if (value < 0) {
+                throw new Error('Tires must be a positive number')
+            }
+        }
+        return true
+    }
+}
+
+var audi = { tires: 4 }
+var audiA4 = new Proxy(audi, validator)
+
+audiA4.tires = 5
+console.log(audiA4) // { tires: 4 }
+
+audiA4.tires = 'foo' // Error: Tires must be a number
+audiA4.tires = -1    // Error: Tires must be a positive number
