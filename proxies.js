@@ -51,8 +51,7 @@ var target = { foo: 'Mr.Foo', _bar: 'Mr.Bar' }
 var proxy = new Proxy(target, handler)
 
 proxy.foo = 'Foo'   // Ok
-console.log(target.foo);
-proxy._bar = 'Bar'  // Invalid attempt to set the private property _bar
+proxy._bar = 'Bar'  // Error: Invalid attempt to set the private property _bar
 
 // It is important to design our proxy in a way
 // that the target object is only acessible through the Proxy.
@@ -90,3 +89,19 @@ console.log(audiA4) // { tires: 4 }
 
 audiA4.tires = 'foo' // Error: Tires must be a number
 audiA4.tires = -1    // Error: Tires must be a positive number
+
+// Revocable Proxies
+// As for the revocable proxies these are the same as Proxies,
+// with the difference that they can be revoke.
+var target = {}
+var handler = {}
+var { proxy, revoke } = Proxy.revocable(target, handler)
+
+proxy.foo = 'Mr.Foo'
+console.log(proxy) // { foo: 'Mr.Foo' }
+
+// By revoking a Proxy we disable any operations on the Proxy.
+// After revoking, any operations on the Proxy will throw an error.
+revoke()
+
+proxy.foo // TypeError: Cannot perform 'get' on a proxy that has been revoked
