@@ -16,3 +16,4 @@
 * [Weak Maps](weak-maps.js)
 * [Sets](sets.js)
 * [Weak Sets](weak-sets.js)
+* [Proxies](proxies.js)
