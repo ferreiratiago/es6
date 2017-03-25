@@ -43,8 +43,8 @@ var handler = {
         if (property[0] === '_') {
             throw new Error (`Invalid attempt to set the private property ${property}`)
         }
-        target[property] = receiver;
-        return true;
+        target[property] = receiver
+        return true
     }
 }
 var target = { foo: 'Mr.Foo', _bar: 'Mr.Bar' }
@@ -56,6 +56,46 @@ proxy._bar = 'Bar'  // Error: Invalid attempt to set the private property _bar
 // It is important to design our proxy in a way
 // that the target object is only acessible through the Proxy.
 // Only this way we will ensure that we will obey our access rules.
+
+// Traps can be applied more than .get() and .set()
+// has
+var target = { foo: 'Mr.Foo', _bar: 'Mr.Bar' }
+var handler = {
+    has: function (target, property) {
+        if (property[0] === '_') {
+            return false
+        }
+        return property in target
+    }
+}
+var proxy = new Proxy(target, handler)
+
+console.log('_bar' in proxy) // false
+console.log('foo'  in proxy) // true
+
+// deleteProperty
+var target = { foo: 'Mr.Foo', _bar: 'Mr.Bar' }
+var handler = {
+    deleteProperty: function (target, property) {
+        if (property[0] === '_') {
+            throw new Error(`Invalid attempt to delete a private property`)
+        }
+        delete target[property]
+    }
+}
+var proxy = new Proxy(target, handler)
+
+console.log('foo' in proxy) // true
+delete proxy.foo
+console.log('foo' in proxy) // false
+
+delete proxy._bar // Error: Invalid attempt to delete a private property
+
+// also on:
+// defineProperty
+// enumerate
+// ownKeys
+// apply
 
 // Validations with Proxies.
 // We can use Proxies to add some validations to Objects.
@@ -104,4 +144,4 @@ console.log(proxy) // { foo: 'Mr.Foo' }
 // After revoking, any operations on the Proxy will throw an error.
 revoke()
 
-proxy.foo // TypeError: Cannot perform 'get' on a proxy that has been revoked
+// proxy.foo // TypeError: Cannot perform 'get' on a proxy that has been revoked
