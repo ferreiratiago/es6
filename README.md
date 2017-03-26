@@ -17,3 +17,4 @@
 * [Sets](sets.js)
 * [Weak Sets](weak-sets.js)
 * [Proxies](proxies.js)
+* [Number](number.js)
