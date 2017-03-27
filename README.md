@@ -19,3 +19,4 @@
 * [Proxies](proxies.js)
 * [Number](number.js)
 * [Array](array.js)
+* [Object](object.js)
