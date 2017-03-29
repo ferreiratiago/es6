@@ -21,3 +21,4 @@
 * [Array](array.js)
 * [Object](object.js)
 * [Strings](strings.js)
+* [Modules](modules.js)
