@@ -16,6 +16,9 @@ Object.is(0, -0)   // false
 Object.is('foo', 'foo') // true
 Object.is(null, null)   // true
 
+// == vs === vs Object.is
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+
 // .getOwnPropertySymbols(obj)
 // Retuns an array with all the properties that are symbols.
 var objectSymbols = Object.getOwnPropertySymbols({
