@@ -48,12 +48,12 @@ const foo = 'Mr.Foo'
 
 // const are the try for constant values,
 // i.e. immutable values
-// however, only the assignmnet is immutable.
+// however, only the assignment is immutable.
 
-foo = 'NewFoo' // error - no new assignmnet allowed
+foo = 'NewFoo' // ERROR - No new assignment allowed.
 
 // An interesting example
 const bar = { a : 3 }
 
-bar = { b : 7} // error - no new assignmnet allowed
-bar.a = 7 // ok - we are updating a property, not the assignmnet
+bar = { b : 7} // ERROR - No new assignment allowed.
+bar.a = 7 // OK - We are updating a property, not the assignment.
