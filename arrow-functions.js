@@ -1,23 +1,23 @@
 /** Arrow Functions **/
 
-const increment = (value) => {
+var increment = (value) => {
     return value + 1
 }
 
 increment(3) // 4
 
 // Without explicit block scope.
-const increment = (value) => value + 1
+var increment = (value) => value + 1
 
 increment(3) // 4
 
-const increment = value => value + 1
+var increment = value => value + 1
 
 increment(3) // 4
 
 // Object returning
 // The return statement needs to be wrapped on '()'.
-const foo = () => ({
+var foo = () => ({
     value: 3
 })
 
@@ -34,6 +34,6 @@ function foo() {
 foo() // Error - bar undefined
 
 // ES6
-const foo = () => this.bar
+var foo = () => this.bar
 
 foo() // 3
