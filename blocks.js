@@ -27,4 +27,4 @@ foo // Reference Error
 
 zed // Mr.Zed
 foo // Reference Error
-bar // Reference Errror
+bar // Reference Error
