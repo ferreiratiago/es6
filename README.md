@@ -6,7 +6,7 @@
 * [Template Literals](#template-literals)
 * [Object Literals](#object-literals)
 * [Spread Operator](#spread-operator)
-* [Classes](classes.js)
+* [Classes](#classes)
 * [Iterators](iterators.js)
 * [Generators](generators.js)
 * [Symbols](symbols.js)
@@ -334,4 +334,61 @@ function foo (a,b,c) {
 }
 
 foo(...[1,2,3]) // 1, 2, 3
+```
+
+## Classes
+
+Javascript is a functional programming language.
+However, the concept of `Classes` in ES6 is just syntax sugar on top of prototypal inheritance.
+The goal is to make the language more obvious to programmers coming from other paradigms (e.g. OO).
+
+### Examples
+```js
+class Counter {
+  constructor () {
+    this.count = 0
+  }
+
+  increment () {
+    this.count++
+  }
+
+  decrement () {
+    this.count--
+  }
+
+  static isNil (counter) {
+      return counter.count === 0
+  }
+}
+
+let counter = new Counter()
+counter.increment()     // 1
+counter.increment()     // 2
+counter.decrement()     // 1
+Counter.isNil(counter)  // false
+```
+
+#### Extends
+```js
+// We now can use the keyword "extends" to easily "inherit" from other "classes".
+// Not forgetting that this is only syntax sugar to ES5 prototype terminology.
+
+class Temperature extends Counter {
+    constructor () {
+        // The super keyword identifies our base class "Counter".
+        super()
+    }
+
+    decrement () {
+        if(this.count > 0) {
+            super.decrement()
+        }
+    }
+}
+
+let termo = new Temperature()
+termo.decrement()   // 0 // no decrement because "count" was already 0
+termo.increment()   // 1
+termo.decrement()   // 0
 ```
