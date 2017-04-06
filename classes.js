@@ -1,8 +1,8 @@
 /** Classes **/
 
 // Javascript is a functional programming language.
-// However, the concept of Classes in ES6 is just syntax suger on top of prototypal inheritance.
-// The goal is to make the language more obvious to programmers comming from other paradigms (e.g. OO).
+// However, the concept of Classes in ES6 is just syntax sugar on top of prototypal inheritance.
+// The goal is to make the language more obvious to programmers coming from other paradigms (e.g. OO).
 
 // ES5
 function Counter () {
@@ -56,7 +56,7 @@ counter.decrement()     // 1
 Counter.isNil(counter)  // false
 
 // We now can use the keyword "extends" to easily "inherit" from other "classes".
-// Not forgettting that this is only syntax sugar to ES5 prototype terminnology.
+// Not forgetting that this is only syntax sugar to ES5 prototype terminology.
 
 class Temperature extends Counter {
     constructor () {
