@@ -86,6 +86,10 @@ foo({})     // 1, 2
 foo({a: 3}) // 3, 2
 ```
 
+### Further Reading
+* [MDN Destructuring Assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* [ExploringJS - Destructuring](http://exploringjs.com/es6/ch_destructuring.html)
+
 ## Arrow Functions
 
 `Arrow function` is a shorter syntax for the common [function expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function).
@@ -134,6 +138,11 @@ var foo = () => this.bar
 foo() // 3
 ```
 
+### Further Reading
+* [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+* [ExploringJS - Arrow Functions](http://exploringjs.com/es6/ch_arrow-functions.html)
+* [PonyFoo - Arrow Functions in Depth](https://ponyfoo.com/articles/es6-arrow-functions-in-depth)
+
 ## Block Scope
 
 `Blocks` are the way to create the common [Immediately Invoked Function Expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE).
@@ -164,6 +173,9 @@ zed // Mr.Zed
 foo // Reference Error
 bar // Reference Error
 ```
+
+### Further Reading
+* [WESBOS ES6 Block Scope IIFE](http://wesbos.com/es6-block-scope-iife/)
 
 ## Let && Const
 
@@ -214,6 +226,11 @@ bar = { b : 7} // error - No new assignment allowed.
 bar.a = 7 // OK - We are updating a property, not the assignment.
 ```
 
+### Further Reading
+* [2ality - Variables and Scoping in ECMAScript 6](http://2ality.com/2015/02/es6-scoping.html)
+* [MDN Const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [MDN let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let)
+* [PonyFoo - ES6 Let, Const and the “Temporal Dead Zone” (TDZ) in Depth](https://ponyfoo.com/articles/es6-let-const-and-temporal-dead-zone-in-depth)
+
 ## Template Literals
 
 `Template literals` allows us to easily build string values with expressions on it.
@@ -261,6 +278,11 @@ const bar = 'Bar'
 mr`Dear ${foo} and ${bar}` // Dear Mr.Foo and Mr.Bar
 ```
 
+### Further Reading
+* [MDN - Template Literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)
+* [ExploringJS - Template Literals](http://exploringjs.com/es6/ch_template-literals.html)
+* [PonyFoo - ES6 Template Literals in Depth](https://ponyfoo.com/articles/es6-template-strings-in-depth)
+
 ## Object Literals
 
 `Object literals` are a simple lists of key properties with a pair value (i.e. key:value).
@@ -289,6 +311,10 @@ const foo = 'Mr.Foo'
   }
 }
 ```
+
+### Further Reading
+* [MDN - Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals)
+* [PonyFoo - ES6 Object Literal Features in Depth](https://ponyfoo.com/articles/es6-object-literal-features-in-depth)
 
 ## Spread Operator
 
@@ -335,6 +361,10 @@ function foo (a,b,c) {
 
 foo(...[1,2,3]) // 1, 2, 3
 ```
+
+### Further Reading
+* [MDN - Spread Syntax](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+* [PonyFoo - ES6 Spread and Butter in Depth](https://ponyfoo.com/articles/es6-spread-and-butter-in-depth)
 
 ## Classes
 
@@ -393,6 +423,11 @@ termo.increment()   // 1
 termo.decrement()   // 0
 ```
 
+### Further Reading
+* [MDN - Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+* [2ality - Classes in ECMAScript 6 (final semantics)](http://2ality.com/2015/02/es6-classes-final.html)
+* [ExploringJS](http://exploringjs.com/es6/ch_classes.html)
+
 ## Iterators
 
 Iteration is the new mechanism offer by ES6 to traversing data.
@@ -447,4 +482,7 @@ for(let item of iterable) {
 ```
 
 ### Further Reading
-* [2ality](http://2ality.com/2015/02/es6-iteration.html) by [Axel Rauschmayer](https://twitter.com/rauschma)
+* [MDN - Iteration Protocols](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Iteration_protocols)
+* [2ality - Iterables and iterators in ECMAScript 6](http://2ality.com/2015/02/es6-iteration.html)
+* [ExploringJS - Iterables and iterators](http://exploringjs.com/es6/ch_iteration.html)
+* [PonyFoo - ES6 Iterators in Depth](https://ponyfoo.com/articles/es6-iterators-in-depth)
