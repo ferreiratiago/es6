@@ -1,11 +1,11 @@
 #  ECMAScript 2015 (ES6)
 * [Destructuring Assignment](#destructuring-assignment)
 * [Arrow Functions](#arrow-functions)
-* [Blocks](#blocks-scope)
-* [Let && Const](let-const.js)
-* [Template Literals](template-literals.js)
-* [Object Literals](object-literals.js)
-* [Spread Operator](spread-operator.js)
+* [Blocks](#block-scope)
+* [Let && Const](#let--const)
+* [Template Literals](#template-literals)
+* [Object Literals](#object-literals)
+* [Spread Operator](#spread-operator)
 * [Classes](classes.js)
 * [Iterators](iterators.js)
 * [Generators](generators.js)
@@ -259,4 +259,79 @@ const foo = 'Foo'
 const bar = 'Bar'
 
 mr`Dear ${foo} and ${bar}` // Dear Mr.Foo and Mr.Bar
+```
+
+## Object Literals
+
+`Object literals` are a simple lists of key properties with a pair value (i.e. key:value).
+
+### Examples
+```js
+// Property value shorthand
+const foo = 'Mr.Foo'
+
+{
+    // Because the property 'foo' has the
+    // same name as the const 'foo'
+    // no need to write { foo: foo }
+    foo
+}
+
+// Computed properties
+{
+    // [ value to compute to property ] : value
+    [ 1 + 3 ] : 'Number 4'
+}
+
+// Method definition
+{ bar () {
+    // Code for function bar
+  }
+}
+```
+
+## Spread Operator
+
+The `spread operator` allow us to expanded an expression into multiple variables (i.e. destructuring assignment) or multiples variables (i.e. array literals) or multiple arguments (i.e. function calls.)
+
+### Examples
+
+### Destructuring Assignment
+```js
+[foo, , ...rest] = [1,2,3,4,5]
+console.log(foo)    // 1
+console.log(rest)   // [3,4,5]
+
+function foo (...parameters) {
+    // parameters is an Array
+    // with all parameters.
+    console.log(parameters)
+}
+foo(1,2,3)      // [1,2,3]
+foo([1,2,3],4)  // [[1,2,3],4]
+
+// We can name some parameters
+function foo (bar, ...parameters) {
+    // bar is the first parameter.
+    // parameters is an Array containing
+    // the remaining parameters.
+    console.log(bar, parameters)
+}
+foo() // undefined, []
+foo(1) // 1, []
+foo(1,2,3) // 1, [2,3]
+```
+
+### Array Literals
+```js
+[1, ...[2,3], 4] // [1,2,3,4]
+```
+
+#### Function Call
+```js
+function foo (a,b,c) {
+    console.log(a,b,c)
+}
+
+foo(...[1,2,3]) // 1, 2, 3
 ```
