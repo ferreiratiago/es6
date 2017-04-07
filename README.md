@@ -13,7 +13,7 @@
 * [Promises](#promises)
 * [Maps](#maps)
 * [Weak Maps](#weak-maps.js)
-* [Sets](sets.js)
+* [Sets](#sets)
 * [Weak Sets](weak-sets.js)
 * [Proxies](proxies.js)
 * [Number](number.js)
@@ -762,7 +762,7 @@ console.log(map.values())   // MapIterator { 'Mr.Foo', 'Mr.Bar' }
 
 ## Weak Maps
 
-We can think of weak maps as a sub set of Maps.
+We can think of `weak maps` as a sub set of Maps.
 WeakMaps are not iterable, i.e. there is no iterable protocol.
 
 ### Examples
@@ -797,3 +797,48 @@ console.log(map.has(foo)) // false
 * [MDN - WealMaps](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
 * [ExploringJS - WeakMap](http://exploringjs.com/es6/ch_maps-sets.html#sec_weakmap)
 * [PonyFoo - ES6 WeakMaps, Sets, and WeakSets in Depth](https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth)
+
+## Sets
+
+`Sets` are another data structure introduced by ECMAScript 6. It works for arbitrary values.
+
+### Examples
+```js
+var set = new Set()
+
+set.add('foo')  // Set { 'foo' }
+set.add('bar')  // Set { 'foo', 'bar' }
+
+// .size
+set.size // 2
+
+// .keys()
+var keysIterator = set.keys() // SetIterator { 'foo', 'bar' }
+keysIterator.next().value     // 'foo'
+keysIterator.next().value     // 'bar'
+
+// .values()
+var valuesIterator = set.values()
+valuesIterator.next().value     // 'foo'
+valuesIterator.next().value     // 'bar'
+
+// .entries()
+// Returns a new Iterator object containing an array of [value, value]
+// for each element in the Set, in insertion order.
+var entriesIterator = set.entries()
+console.log(entriesIterator.next().value) // ['foo', 'foo']
+console.log(entriesIterator.next().value) // ['bar', 'bar']
+
+// .add()
+set.add('zed')   // Set { 'foo', 'bar', 'zed' }
+
+// .has()
+set.has('zed')   // true
+
+// .delete()
+set.delete('zed') // Set { 'foo', 'bar' }
+```
+
+### Further Reading
+* [MDN - Set](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set)
+* [ExploringJS - Set](http://exploringjs.com/es6/ch_maps-sets.html#sec_set)
