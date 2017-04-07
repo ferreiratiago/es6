@@ -12,7 +12,7 @@
 * [Symbols](#symbols)
 * [Promises](#promises)
 * [Maps](#maps)
-* [Weak Maps](weak-maps.js)
+* [Weak Maps](#weak-maps.js)
 * [Sets](sets.js)
 * [Weak Sets](weak-sets.js)
 * [Proxies](proxies.js)
@@ -87,7 +87,7 @@ foo({a: 3}) // 3, 2
 ```
 
 ### Further Reading
-* [MDN Destructuring Assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* [MDN - Destructuring Assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 * [ExploringJS - Destructuring](http://exploringjs.com/es6/ch_destructuring.html)
 
 ## Arrow Functions
@@ -139,7 +139,7 @@ foo() // 3
 ```
 
 ### Further Reading
-* [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+* [MDN - Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 * [ExploringJS - Arrow Functions](http://exploringjs.com/es6/ch_arrow-functions.html)
 * [PonyFoo - Arrow Functions in Depth](https://ponyfoo.com/articles/es6-arrow-functions-in-depth)
 
@@ -228,7 +228,7 @@ bar.a = 7 // OK - We are updating a property, not the assignment.
 
 ### Further Reading
 * [2ality - Variables and Scoping in ECMAScript 6](http://2ality.com/2015/02/es6-scoping.html)
-* [MDN Const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [MDN let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let)
+* [MDN - Const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [MDN - let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let)
 * [PonyFoo - ES6 Let, Const and the “Temporal Dead Zone” (TDZ) in Depth](https://ponyfoo.com/articles/es6-let-const-and-temporal-dead-zone-in-depth)
 
 ## Template Literals
@@ -546,7 +546,7 @@ console.log([...generator()]) // ['f','o','o']
 ```
 
 ### Further Reading
-* [MDN Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator)
+* [MDN - Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator)
 * [2ality - ES6 generators in depth](http://2ality.com/2015/03/es6-generators.html)
 * [PonyFoo - ES6 Generators in Depth](https://ponyfoo.com/articles/es6-generators-in-depth)
 
@@ -611,7 +611,7 @@ console.log(Symbol.keyFor(BAR)) // 'bar'
 ```
 
 ### Further Reading
-* [MDN Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+* [MDN - Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 * [ExploringJS - Symbols](http://exploringjs.com/es6/ch_symbols.html)
 * [PonyFoo - ES6 Symbols in Depth](https://ponyfoo.com/articles/es6-symbols-in-depth)
 
@@ -677,7 +677,7 @@ Promise.all([
 ```
 
 ### Further Reading
-* [MDN Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [MDN - Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 * [ExploringJS - Promises for asynchronous programming](http://exploringjs.com/es6/ch_promises.html)
 * [PonyFoo - ES6 Promises in Depth](https://ponyfoo.com/articles/es6-promises-in-depth)
 
@@ -759,3 +759,41 @@ console.log(map.values())   // MapIterator { 'Mr.Foo', 'Mr.Bar' }
 * [MDN - Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map)
 * [ExploringJS - Map](http://exploringjs.com/es6/ch_maps-sets.html#sec_map)
 * [PonyFoo - ES6 Maps in Depth](https://ponyfoo.com/articles/es6-maps-in-depth)
+
+## Weak Maps
+
+We can think of weak maps as a sub set of Maps.
+WeakMaps are not iterable, i.e. there is no iterable protocol.
+
+### Examples
+```js
+var map = new WeakMap()
+
+// Every key must be an object.
+map.set('foo', 'Mr.Foo') // TypeError: Invalid value used as weak map key
+
+// This enables the map keys to be garage collected
+//  when they're only being referenced as WeakMap keys.
+// This is useful when we want to store data that will
+//  eventually be lost, e.g. DOM nodes.
+
+// We can pass an iterable to populate the WeakMap.
+var foo = new Date()
+var bar = () => {}
+var map = new WeakMap([[foo, 'Mr.foo'], [bar, 'Mr.bar']]);
+
+// .has()
+console.log(map.has(foo)) // true
+
+// .get()
+console.log(map.get(bar)) // 'Mr.Bar'
+
+// .delete()
+map.delete(foo);
+console.log(map.has(foo)) // false
+```
+
+### Further Reading
+* [MDN - WealMaps](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
+* [ExploringJS - WeakMap](http://exploringjs.com/es6/ch_maps-sets.html#sec_weakmap)
+* [PonyFoo - ES6 WeakMaps, Sets, and WeakSets in Depth](https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth)
