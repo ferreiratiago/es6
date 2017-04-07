@@ -10,7 +10,7 @@ const ID = Symbol()
 // Every symbol returned by Symbol() is unique.
 Symbol() === Symbol() // false
 
-// Symbol() has an optinal string-value parameters,
+// Symbol() has an optional string-value parameters,
 // which represents the symbol description.
 // This description is used to convert the symbol to a String.
 const symbol = Symbol('aSymbol')
