@@ -2,7 +2,7 @@
 
 // What is a Promise?
 // Is defined as "a proxy for a value that will eventually become available".
-// Algouth they can be use to both synchronous and asynchronous code flows,
+// Although they can be use to both synchronous and asynchronous code flows,
 // they are though for async flows.
 
 var fetch = require('node-fetch')
@@ -27,17 +27,18 @@ fetch('foo').then(function onFulfilled (response) {
 // We can create promises from scratch by using 'new Promise(resolver)',
 // where 'resolver' parameter is the method used to resolve the promise.
 
-// The 'resolver' paramter has two arguments:
+// The 'resolver' parameter has two arguments:
 // * resolve - callback to when the promise is fulfilled
 // * rejected - callback to when the promise is rejected
 
-new Promise(resolve => resolve())   // promise if fulfilled
-// new Promise((resolve, reject) => reject())  // promise if rejected
+new Promise(resolve => resolve())   // promise is fulfilled
+// new Promise((resolve, reject) => reject())  // promise is rejected
 
 // Resolving a promise with a value.
 new Promise(resolve => resolve('foo'))
     .then(result => console.log(result)) // foo
 
+// Resolving a promise with an exception.
 new Promise((resolve, reject) => reject(new Error('Connection Timeout')))
     .then(null, reason => console.log(reason)) // Error: Connection Timeout
 
