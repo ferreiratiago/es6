@@ -11,7 +11,7 @@
 * [Generators](#generators)
 * [Symbols](#symbols)
 * [Promises](#promises)
-* [Maps](maps.js)
+* [Maps](#maps)
 * [Weak Maps](weak-maps.js)
 * [Sets](sets.js)
 * [Weak Sets](weak-sets.js)
@@ -680,3 +680,82 @@ Promise.all([
 * [MDN Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 * [ExploringJS - Promises for asynchronous programming](http://exploringjs.com/es6/ch_promises.html)
 * [PonyFoo - ES6 Promises in Depth](https://ponyfoo.com/articles/es6-promises-in-depth)
+
+## Maps
+
+A `Map` object is a new data structure is JavaScript with a simple key/value map. Any value (i.e. primite or objects) can be used as both key and value.
+
+### Examples
+
+#### new Map
+```js
+var map = new Map()
+
+// We can use any object that follows the iterable protocol.
+// e.g. ['key', 'value']
+var map = new Map([
+    ['foo', 'Mr.Foo'],
+    ['bar', 'Mr.Bar']
+])      
+console.log(map)        // Map { 'foo' => 'Mr.Foo', 'bar' => 'Mr.Bar' }
+// We can use the spread operator to have the opposite effect.
+console.log([...map])   // [ [ 'foo', 'Mr.Foo' ], [ 'bar', 'Mr.Bar' ] ]
+```
+
+#### .set()
+```js
+var map = new Map()
+
+// Use primitive as values.
+map.set('foo', 'Mr.Foo') // Map { 'foo' => 'Mr.Foo' }
+map.set(3, 'Mr.3')       // Map { 'foo' => 'Mr.Foo', 3 => 'Mr.3'  }
+// Because `keys` are unique, when setting a key that is already defined,
+// it will override the existing one.
+map.set('foo', 'Mr.Bar') // Map { 'foo' => 'Mr.Bar', 3 => 'Mr.3'  }
+
+// Use objects as values.
+map.set(() => 'key', 'Value')   // Map { [Function] => 'Value' }
+map.set({}, 'Value')            // Map { {} => 'Value' }
+map.set(new Date, 'Value')      // Map { 2017-03-16T16:37:15.488Z => 'Value' }
+map.set(Symbol, 'Value')        // Map { Symbol => 'Value' }
+```
+
+#### .has()
+```js
+var map = new Map([['foo', 'Mr.Foo']])
+
+console.log(map.has('foo')) // true
+console.log(map.has('bar')) // false
+```
+
+#### Deleting `key/value`
+```js
+var map = new Map([['foo', 'Mr.Foo'], ['bar', 'Mr.Bar']])
+
+// Using .delete()
+map.delete('bar')
+console.log(map) // Map { 'foo' => 'Mr.Foo' }
+
+// Using .clear(), which deletes everything
+map.clear()
+console.log(map) // Map { }
+```
+
+#### Iterating
+```js
+var map = new Map([['foo', 'Mr.Foo'], ['bar', 'Mr.Bar']])
+
+// Use .entries() to iterate over the map.
+console.log(map.entries())  // MapIterator { [ 'foo', 'Mr.Foo' ], [ 'bar', 'Mr.Bar' ] }
+
+// Use .keys() to iterate over the map keys.
+console.log(map.keys())     // MapIterator { 'foo', 'bar' }
+
+// Use .values() to iterate over the map values.
+console.log(map.values())   // MapIterator { 'Mr.Foo', 'Mr.Bar' }
+```
+
+### Further Reading
+* [MDN - Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map)
+* [ExploringJS - Map](http://exploringjs.com/es6/ch_maps-sets.html#sec_map)
+* [PonyFoo - ES6 Maps in Depth](https://ponyfoo.com/articles/es6-maps-in-depth)
