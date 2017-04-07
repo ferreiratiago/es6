@@ -9,7 +9,7 @@
 * [Classes](#classes)
 * [Iterators](#iterators)
 * [Generators](#generators)
-* [Symbols](symbols.js)
+* [Symbols](#symbols)
 * [Promises](promises.js)
 * [Maps](maps.js)
 * [Weak Maps](weak-maps.js)
@@ -549,3 +549,68 @@ console.log([...generator()]) // ['f','o','o']
 * [MDN Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator)
 * [2ality - ES6 generators in depth](http://2ality.com/2015/03/es6-generators.html)
 * [PonyFoo - ES6 Generators in Depth](https://ponyfoo.com/articles/es6-generators-in-depth)
+
+## Symbols
+
+`Symbols` are just a new primitive type in Javascript.
+
+```js
+typeof Symbol() // 'symbol'
+```
+
+### Examples
+```js
+// They are simple tokens that can be used as unique IDs.
+// We can create a new symbol by using the function Symbol().
+const ID = Symbol()
+
+// Every symbol returned by Symbol() is unique.
+Symbol() === Symbol() // false
+```
+
+#### Description
+```js
+// Symbol() has an optional string-value parameters,
+// which represents the symbol description.
+// This description is used to convert the symbol to a String.
+const symbol = Symbol('aSymbol')
+
+String(symbol) // 'Symbol(aSymbol)'
+```
+
+#### As Object Property
+```js
+const KEY = Symbol()
+const obj = {
+    [KEY]: 'Value'
+}
+
+console.log(obj[KEY]) // 'Value'
+```
+
+#### As Concept
+```js
+const CAR_BMW = Symbol('BMW')
+const CAR_AUDI = Symbol('Audi')
+const CAR_MERCEDES = Symbol('Mercedes')
+```
+
+#### .for() and .keyFor()
+```js
+// We can add symbols at run-time with Symbol.for(key) and Symbol.keyFor(symbol)
+
+// We can lookup key in runtime-wide on symbol registry.
+// If a symbol with that key exists then it would be returned.
+// If no symbol exists, then on would be created.
+// Therefore, Symbol.for(key) is idempotent.
+Symbol.for('foo') === Symbol.for('foo') // true
+
+// Symbol.keyFor(symbol) returns the key to which the symbol was associated with.
+const BAR = Symbol.for('bar')
+console.log(Symbol.keyFor(BAR)) // 'bar'
+```
+
+### Further Reading
+* [MDN Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+* [ExploringJS - Symbols](http://exploringjs.com/es6/ch_symbols.html)
+* [PonyFoo - ES6 Symbols in Depth](https://ponyfoo.com/articles/es6-symbols-in-depth)
