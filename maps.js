@@ -29,7 +29,7 @@ console.log(map) // Map { 'foo' => 'Mr.Foo', 'bar' => 'Mr.Bar' }
 // We can use the spread operator to have the opposite effect.
 console.log([...map]) // [ [ 'foo', 'Mr.Foo' ], [ 'bar', 'Mr.Bar' ] ]
 
-// We can yse for...of along with destructuring to handle the map.
+// We can use for...of along with destructuring to handle the map.
 for (let [key, value] of map) {
     console.log(`${key}: ${value}`)
     // 'foo: Mr.Foo'
