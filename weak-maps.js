@@ -7,9 +7,9 @@
 var map = new WeakMap()
 map.set('foo', 'Mr.Foo') // TypeError: Invalid value used as weak map key
 
-// This enable the map keys to be garage collected
+// This enables the map keys to be garage collected
 // when they're only being referenced as WeakMap keys.
-// This is usefull when we want to store data that will
+// This is useful when we want to store data that will
 // eventually be lost, e.g. DOM nodes.
 
 // We can pass an iterable to populate the WeakMap.
