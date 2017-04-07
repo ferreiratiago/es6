@@ -12,7 +12,7 @@ set.add('foo')
 set.add('foo')
 // If the value already exists.
 // It will not be added again.
-console.log(set) // // Set { 'foo', 'bar' }
+console.log(set) // Set { 'foo', 'bar' }
 
 // Property .size
 console.log(set.size) // 2
@@ -58,7 +58,3 @@ console.log(set.has('zed')) // true
 set.delete('zed')
 
 console.log(set) // Set { 'foo', 'bar' }
-
-// .size
-// Property with the total number of elements.
-console.log(set.size) // 2
