@@ -12,9 +12,9 @@
 * [Symbols](#symbols)
 * [Promises](#promises)
 * [Maps](#maps)
-* [Weak Maps](#weak-maps.js)
+* [Weak Maps](#weak-maps)
 * [Sets](#sets)
-* [Weak Sets](weak-sets.js)
+* [Weak Sets](#weak-sets)
 * [Proxies](proxies.js)
 * [Number](number.js)
 * [Array](array.js)
@@ -762,7 +762,7 @@ console.log(map.values())   // MapIterator { 'Mr.Foo', 'Mr.Bar' }
 
 ## Weak Maps
 
-We can think of `weak maps` as a sub set of Maps.
+We can think of `WeakMaps` as a sub set of Maps.
 WeakMaps are not iterable, i.e. there is no iterable protocol.
 
 ### Examples
@@ -842,3 +842,27 @@ set.delete('zed') // Set { 'foo', 'bar' }
 ### Further Reading
 * [MDN - Set](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set)
 * [ExploringJS - Set](http://exploringjs.com/es6/ch_maps-sets.html#sec_set)
+* [PonyFoo - ES6 WeakMaps, Sets, and WeakSets in Depth](https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth)
+
+## Weak Sets
+
+A `WeakSet` is set that it allows its elements being garbage-collected.
+
+### Examples
+```js
+var set = new Set()
+
+// .add()
+set.add('foo')    // Set { 'foo' }
+
+// .has()
+set.has('foo')    // true
+
+// .delete()
+set.delete('foo') // Set { }
+```
+
+### Further Reading
+* [MDN - WeakSets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)
+* [ExploringJS - WeakSets](http://exploringjs.com/es6/ch_maps-sets.html#sec_weakset)
+* [PonyFoo - ES6 WeakMaps, Sets, and WeakSets in Depth](https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth)
