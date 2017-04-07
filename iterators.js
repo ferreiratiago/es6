@@ -1,6 +1,6 @@
 /** Iterators **/
 
-// Iteration is the new mechanismo offer by ES6 to traversing data.
+// Iteration is the new mechanism offer by ES6 to traversing data.
 
 // An iterable is a data structure responsable to enable data access to the public,
 //  and it does that by implementing a method whose key is 'Symbol.iterator'
