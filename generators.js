@@ -1,10 +1,10 @@
 /** Generators **/
 
 // Generators are created by declaring a generator function,
-// whih return a generator object (e.g. g) that can then be iterated using
+// which returns a generator object (e.g. g) that can then be iterated using
 // Array.from(g), [...g], or for value of g.
 
-// We use the symol * to mark a function as a generetor
+// We use the symbol * to mark a function as a generator
 // and 'yield' to emit an element sequence.
 function* generator () {
     yield 'f'
@@ -45,7 +45,7 @@ foo.next() // emits { value: 'f', done: false } and suspends
 foo.next() // logs 'and', emits { value: 'bar', done: false }, and suspends
 foo.next() // emits {value: undefined, done: true } and finishes
 
-// Whenever .next() is called on a generator, there's four events can suspend the execution:
+// Whenever .next() is called on a generator, there's four events that can suspend the execution:
 // * yield - emits the next value in the sequence
 // * return - returns the last value in the sequence
 // * throw - stops the execution in the generator entirely
