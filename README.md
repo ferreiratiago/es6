@@ -10,7 +10,7 @@
 * [Iterators](#iterators)
 * [Generators](#generators)
 * [Symbols](#symbols)
-* [Promises](promises.js)
+* [Promises](#promises)
 * [Maps](maps.js)
 * [Weak Maps](weak-maps.js)
 * [Sets](sets.js)
@@ -614,3 +614,69 @@ console.log(Symbol.keyFor(BAR)) // 'bar'
 * [MDN Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 * [ExploringJS - Symbols](http://exploringjs.com/es6/ch_symbols.html)
 * [PonyFoo - ES6 Symbols in Depth](https://ponyfoo.com/articles/es6-symbols-in-depth)
+
+## Promises
+
+A `promise` is defined as "a proxy for a value that will eventually become available".
+Although they can be use to both synchronous and asynchronous code flows, they are though for async flows.
+
+### Examples
+
+#### .then()
+We can chain a Promise with the method `.then()`, which has two parameters:
+* **onFulfilled** - Callback to be executed on promise success
+* **onRejected** - Callback to be executed on promise fail
+
+```js
+fetch('foo').then(
+    function onFulfilled (response) {
+        // Handle success response.
+        console.log(response)
+    },
+    function onRejected () {
+        // Handle error.
+        console.log('error')
+    }
+)
+```
+
+#### new Promise()
+We can create promises from scratch by using `new Promise(resolver)`, where `resolver` parameter is the method used to resolve the promise.
+
+The `resolver` parameter has two arguments:
+* **resolve** - Callback to when the promise is fulfilled
+* **rejected** - Callback to when the promise is rejected
+
+```js
+new Promise(resolve => resolve())           // promise is fulfilled
+new Promise((resolve, reject) => reject())  // promise is rejected
+
+// Resolving a promise with a value.
+new Promise(resolve => resolve('foo'))
+    .then(result => console.log(result))        // foo
+
+// Resolving a promise with an exception.
+new Promise((resolve, reject) => reject(new Error('Connection Timeout')))
+    .then(null, reason => console.log(reason)) // Error: Connection Timeout
+```
+
+#### Promise.all
+It allow us to wait for a set of promise to resolve.
+
+```js
+Promise.all([
+    new Promise(resolve => resolve('foo')),
+    new Promise(resolve => resolve('bar'))
+]).then(response => console.log(response))  // ['foo', 'bar']
+
+// If a single promise is rejected, the Promise.all is entirely rejected.
+Promise.all([
+    Promise.reject(),
+    new Promise(resolve => resolve('foo'))
+]).then(() => console.log('All Resolved'), () => console.log('All Rejected')) // 'All Rejected'
+```
+
+### Further Reading
+* [MDN Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [ExploringJS - Promises for asynchronous programming](http://exploringjs.com/es6/ch_promises.html)
+* [PonyFoo - ES6 Promises in Depth](https://ponyfoo.com/articles/es6-promises-in-depth)
