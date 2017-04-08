@@ -15,7 +15,7 @@
 * [Weak Maps](#weak-maps)
 * [Sets](#sets)
 * [Weak Sets](#weak-sets)
-* [Proxies](proxies.js)
+* [Proxies](#proxies)
 * [Number](number.js)
 * [Array](array.js)
 * [Object](object.js)
@@ -866,3 +866,67 @@ set.delete('foo') // Set { }
 * [MDN - WeakSets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)
 * [ExploringJS - WeakSets](http://exploringjs.com/es6/ch_maps-sets.html#sec_weakset)
 * [PonyFoo - ES6 WeakMaps, Sets, and WeakSets in Depth](https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth)
+
+## Proxies
+
+`Proxies` allows us to intercept and customize behaviour on operations performed on objects (e.g. getting ot setting properties). They are a metaprogramming feature.
+
+### Examples
+```js
+// Proxies allows us to defined behaviour whenever
+// the properties of a target object are accessed.
+var target = {}
+// The handler object is used to configure traps for our Proxy.
+var handler = {}
+var proxy = new Proxy(target, handler)
+
+// Proxy works as a simple pass-through to the target.
+proxy.foo = 'Mr.Foo'
+
+console.log(target.foo) // 'Mr.Foo'
+console.log(target.bar) // undefined
+```
+
+#### Traps
+Traps allow us to intercept interactions on target, as long as those interactions happen through the Proxy.
+```js
+// Let's define a Trap on the handler.get().
+var handler = {
+    // The handler.get() method is a trap for getting a property value.
+    get: function (target, property, receiver) {
+        // We run our Trap code, i.e. console.log.
+        console.log(`Got property ${property}`)
+        // Then return the value as .get() will usually do.
+        return target[property]
+    }
+}
+var target = { foo: 'Mr.Foo' }
+var proxy = new Proxy(target, handler)
+
+console.log(proxy.foo)
+// 'Got property foo'
+// 'Mr.Foo'
+```
+
+#### Revoke
+Revocable proxies are the same as Proxies, with the difference that they can be revoke.
+
+```js
+var target = {}
+var handler = {}
+var { proxy, revoke } = Proxy.revocable(target, handler)
+
+proxy.foo = 'Mr.Foo'
+console.log(proxy) // { foo: 'Mr.Foo' }
+
+// By revoking a Proxy we disable any operations on the Proxy.
+// After revoking, any operations on the Proxy will throw an error.
+revoke()
+
+proxy.foo // TypeError: Cannot perform 'get' on a proxy that has been revoked
+```
+
+### Further Reading
+* [MDN - Proxy](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+* [ExploringJS - Metaprogramming with proxies](http://exploringjs.com/es6/ch_proxies.html#sec_overview-proxies)
+* [PonyFoo - ES6 Proxies in Depth](https://ponyfoo.com/articles/es6-proxies-in-depth)
