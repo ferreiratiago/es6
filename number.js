@@ -35,13 +35,13 @@ Number.isFinite(null)   // false, would be true with global isFinite(null)
 
 // .parseInt()
 // Parses a String to an integer in the specified radix.
-// Has exacly the same functionality as the global parseInt().
+// Has exactly the same functionality as the global parseInt().
 Number.parseInt('10', 2)  // 2
 Number.parseInt('10', 8)  // 8
 Number.parseInt('10', 10) // 10
 
 // .parseFloat()
-// As for parseInt, Number.parseFloat() has exacly the same
+// As for parseInt, Number.parseFloat() has exactly the same
 // functionality as the global parseFloat().
 
 // .isInteger()
