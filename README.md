@@ -17,7 +17,7 @@
 * [Weak Sets](#weak-sets)
 * [Proxies](#proxies)
 * [Number](#number)
-* [Array](array.js)
+* [Array](#array)
 * [Object](object.js)
 * [Strings](strings.js)
 * [Modules](modules.js)
@@ -972,13 +972,13 @@ Number.isFinite(null)   // false, would be true with global isFinite(null)
 
 // .parseInt()
 // Parses a String to an integer in the specified radix.
-// Has exacly the same functionality as the global parseInt().
+// Has exactly the same functionality as the global parseInt().
 Number.parseInt('10', 2)  // 2
 Number.parseInt('10', 8)  // 8
 Number.parseInt('10', 10) // 10
 
 // .parseFloat()
-// As for parseInt, Number.parseFloat() has exacly the same
+// As for parseInt, Number.parseFloat() has exactly the same
 // functionality as the global parseFloat().
 
 // .isInteger()
@@ -1003,7 +1003,7 @@ Number.MAX_SAFE_INTEGER
 // can be safely and precisely represented in JavaScript.
 
 Number.MIN_SAFE_INTEGER
-// Which represents the smallets integer that
+// Which represents the smallest integer that
 // can be safely and precisely represented in JavaScript.
 
 Number.isSafeInteger
