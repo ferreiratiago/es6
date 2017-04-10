@@ -18,7 +18,7 @@
 * [Proxies](#proxies)
 * [Number](#number)
 * [Array](#array)
-* [Object](object.js)
+* [Object](#object)
 * [Strings](strings.js)
 * [Modules](modules.js)
 
@@ -1014,3 +1014,43 @@ Number.isSafeInteger
 ### Further Reading
 * [MDN - Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 * [PonyFoo - ES6 Number Improvements in Depth](https://ponyfoo.com/articles/es6-number-improvements-in-depth)
+
+## Object
+
+There were a couple of changes in JavaScript `Objects`, mainly:
+* **Object.assign** -  Copies the values of all enumerable properties from on or more source objects to the target and returns the target's object reference.
+* **Object.is** - Determines if two objects are the same.
+* **Object.getOwnPropertySymbols** - Returns an array with all the properties that are symbols.
+* **Object.setPrototypeOf** - Sets the prototype of the specified object to another prototype.
+
+### Example
+```js
+// .assign(target, ...sources)
+Object.assign({}, { foo: 'Mr.Foo' }, { bar: 'Mr.Bar' }) // { foo: 'Mr.Foo', bar: 'Mr.Bar' }
+Object.assign({ foo: 'Mr.Foo' }, { foo: 'Foo' })        // { foo: 'Foo' }
+
+// .is(value1, value2)
+Object.is([], [])  // false
+Object.is({}, {})  // false
+Object.is(0, -0)   // false
+
+Object.is('foo', 'foo') // true
+Object.is(null, null)   // true
+
+// .getOwnPropertySymbols(obj)
+var objectSymbols = Object.getOwnPropertySymbols({
+    [Symbol('foo')]: 'Mr.Foo',
+    [Symbol('bar')]: 'Mr.Bar'
+}) // [ Symbol(foo), Symbol(bar) ]
+
+console.log(objectSymbols.length) // 2
+console.log(objectSymbols[0])     // Symbol(foo)
+
+// .setPrototypeOf(obj, prototype)
+var foo = {}
+Object.setPrototypeOf(foo, null)
+console.log(Object.getPrototypeOf(foo)) // null
+```
+
+### Further Reading
+* [PonyFoo - ES6 Object Changes in Depth](https://ponyfoo.com/articles/es6-object-changes-in-depth)
