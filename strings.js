@@ -52,5 +52,5 @@ console.log(iterator.next().value); // 'B'
 String.fromCodePoint(70, 111, 111) // 'Foo'
 
 // .normalize([form])
-// Retuns a Unicode Normalization Form of a give string.
+// Returns a Unicode Normalization Form of a give string.
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
