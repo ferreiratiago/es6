@@ -20,7 +20,7 @@
 * [Array](#array)
 * [Object](#object)
 * [Strings](#strings)
-* [Modules](modules.js)
+* [Modules](#modules)
 
 ## Destructuring Assignment
 
@@ -1123,3 +1123,56 @@ String.fromCodePoint(70, 111, 111) // 'Foo'
 ### Further Reading
 * [ExploringJS - New string features](http://exploringjs.com/es6/ch_strings.html)
 * [PonyFoo - ES6 Strings (and Unicode, ❤) in Depth](https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth)
+
+## Modules
+
+`Modules` is the JavaScript standard module system strongly influenced by CommonJS. With ES6 modules we now have the terminology of `export` and `import` which we will explored in the examples bellow.
+
+### Examples
+
+#### Export
+```js
+// Default export
+export default 'foo'
+export default NaN
+export default { foo: 'Mr.Foo' }
+export default () => 'Mr.Foo'
+
+// Naming export
+export var foo = 'Mr.Foo'
+
+var foo = 'Mr.Foo'
+var bar = 'Mr.Bar'
+export { foo, bar }
+
+var foo = 'Mr.Foo'
+export { foo as myFoo }
+
+// Default export with naming
+var api = {
+    foo: 'Mr.Foo',
+    bar: 'Mr.Bar'
+}
+export default api
+```
+
+#### Import
+```js
+// Default import
+// export default 'foo'
+import * from '_moduleName_'
+
+// Naming import
+// export var foo = 'Mr.Foo'
+import { foo } from '_moduleName_'
+
+// export { foo: 'Mr.Foo', bar: 'Mr.Bar' }
+import { foo, bar } from '_moduleName_'
+
+// export { foo as myFoo }
+import { myFoo } from '_moduleName_'
+```
+
+### Further Reading
+* [ExploringJS - Modules](http://exploringjs.com/es6/ch_modules.html)
+* [PonyFoo - ES6 Modules in Depth](https://ponyfoo.com/articles/es6-modules-in-depth)
