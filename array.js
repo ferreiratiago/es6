@@ -34,7 +34,7 @@ Array(3).fill('foo', 1, 2)  // [ , 'foo',  ]
 
 // .find(callback)
 // Returns the first element in the array
-// that satisfay the condition.
+// that satisfies the condition.
 function isEven(value) {
     return value % 2 === 0
 }
@@ -43,7 +43,7 @@ Array(1,2,3,4).find(isEven) // 2
 
 // .findIndex(callback)
 // Returns the index of the first element in the array
-// that satisfay the condition.
+// that satisfies the condition.
 Array(1,2,3,4).findIndex(isEven) // 1 <- index of element 2
 
 // Iterators
