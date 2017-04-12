@@ -51,8 +51,16 @@ for(let item of iterable) {
 }
 
 // Objects are not iterable by default. Why?
-// There are two levels at which we can iterate in Javascript:
-// 1. The program level: iterating  over properties (meaning the structure of a program)
-// 2. The data level: iterating over a data structure (meaning the data manage by the program)
-
-// Some built-ins like Array, String, or arguments are iterable by default in ES6.
+// The good reason for this is that there are two levels at which we can iterate in Javascript, mainly:
+// 1. The program level: iterating over object properties that represent program structure.
+//      For instance, for(let e in [1,2,3]) console.log(e), prints 0,1,2, which are the array indexes.
+//      These indexes represent program structure.
+// 2. The data level: iterating over a data structure and extract all meaninfull data.
+//      For instance, for(let e of [1,2,3]) console.log(e), prints 1,2,3, which is the array data.
+//
+// Although this distinction (program vs data) can be implemented in a controlled structure, such as
+//  Array or String, there is no meaninfull way to implement the iteraction protocol for an object.
+// If objects were iterable by default, then program and data would be mixed up.
+// Since every type in Javascript is based on a plain object this would apply to Array and String,
+//  which means that program properties such as 'push' and 'length' would be listed alongs
+//  with the data.
