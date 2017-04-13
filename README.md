@@ -763,7 +763,7 @@ console.log(map.values())   // MapIterator { 'Mr.Foo', 'Mr.Bar' }
 ## Weak Maps
 
 We can think of `WeakMaps` as a sub set of Maps.
-WeakMaps are not iterable, i.e. there is no iterable protocol.
+WeakMaps are not iterable, i.e. they don't follow the iterable protocol.
 
 ### Examples
 ```js
@@ -869,7 +869,7 @@ set.delete('foo') // Set { }
 
 ## Proxies
 
-`Proxies` allows us to intercept and customize behaviour on operations performed on objects (e.g. getting ot setting properties). They are a metaprogramming feature.
+`Proxies` allows us to intercept and customize behaviour on operations performed on objects (e.g. getting of setting properties). They are a metaprogramming feature.
 
 ### Examples
 ```js
@@ -889,6 +889,7 @@ console.log(target.bar) // undefined
 
 #### Traps
 Traps allow us to intercept interactions on target, as long as those interactions happen through the Proxy.
+
 ```js
 // Let's define a Trap on the handler.get().
 var handler = {

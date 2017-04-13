@@ -18,7 +18,6 @@ const iterable = {
 // @@iterator will be asked for an iterator.
 // The returned iterator is then used to obtain the values of the object.
 
-
 // The iterator protocol has to define how to get values out of an object.
 // We need to define an @@iterator that satisfies that.
 
