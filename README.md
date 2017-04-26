@@ -266,7 +266,7 @@ const bar = () => 'MrBar'
 const mr = (template, ...expressions) => {
     // template is an Array broke at the interpolations
     // e.g. for `foo {$a} bar {$b}`
-    // template = ['foo ', ' bar ', '']
+    // template = ['Dear ', ' and ', '']
     return template.reduce((result, current, index) => {
         return `${result}Mr.${expressions[index - 1]}${current}`
     })
