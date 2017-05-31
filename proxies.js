@@ -23,7 +23,7 @@ var handler = {
     // The handler.get() method is a trap for getting a property value.
     get: function (target, property, receiver) {
         // We run our Trap code, i.e. console.log.
-        console.log(`Got property ${property}`)
+        console.log(`Got property ${property.toString()}`)
         // Then return the value as .get() will usually do.
         return target[property]
     }
